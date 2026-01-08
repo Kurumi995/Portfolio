@@ -21,17 +21,20 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    if (location.hash) {
-      const el = document.querySelector(location.hash)
-      if (el instanceof HTMLElement) el.scrollIntoView({ block: 'start' })
-    }
-  }, [location.pathname, location.hash])
+  }, [location.pathname, location.search])
 
   return (
     <div className="app">
-      <a className="skip" href="#content">
+      <button
+        className="skip"
+        type="button"
+        onClick={() => {
+          const el = document.getElementById('content')
+          if (el instanceof HTMLElement) el.focus()
+        }}
+      >
         Skip to content
-      </a>
+      </button>
       <Nav
         left={
           <Link className="brand" to="/" aria-label="Go to home">

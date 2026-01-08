@@ -2,10 +2,10 @@ import { content } from '../content'
 import { Link } from 'react-router-dom'
 
 export function Home() {
-  const name = content.profile.name
   const emailHref = content.links.email.href
   const githubHref = content.links.github.href
   const linkedinHref = content.links.linkedin.href
+  const base = import.meta.env.BASE_URL
 
   return (
     <div id="top">
@@ -33,15 +33,15 @@ export function Home() {
       <div className="homeDemos">
         <div className="container">
           <div className="homeSquareGrid">
-            <Link className="btn homeSquareBtn" to="/projects#web">
+            <Link className="btn homeSquareBtn" to="/projects?section=web">
               <span className="homeSquareInner">
-                <img className="homeDemoImgIcon" src="/app.png" alt="" aria-hidden="true" />
+                <img className="homeDemoImgIcon" src={`${base}app.png`} alt="" aria-hidden="true" />
                 <span className="homeSquareText">Mobile / Web App</span>
               </span>
             </Link>
-            <Link className="btn homeSquareBtn" to="/projects#unity">
+            <Link className="btn homeSquareBtn" to="/projects?section=unity">
               <span className="homeSquareInner">
-                <img className="homeDemoImgIcon" src="/console.png" alt="" aria-hidden="true" />
+                <img className="homeDemoImgIcon" src={`${base}console.png`} alt="" aria-hidden="true" />
                 <span className="homeSquareText">Unity 3D / XR Game</span>
               </span>
             </Link>

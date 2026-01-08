@@ -3,7 +3,10 @@ import { Badge } from './Badge'
 import { Icon } from './Icon'
 
 export function ProjectCard({ project }: { project: Project }) {
+  const base = import.meta.env.BASE_URL
+  const resolvePublic = (p: string) => (p.startsWith('/') ? `${base}${p.slice(1)}` : p)
   const imageHref = project.image?.href ?? project.links.demo?.href
+  const youtubeSrc = project.youtubeId ? `https://www.youtube-nocookie.com/embed/${project.youtubeId}` : null
 
   return (
     <article className="card projectCard">
@@ -31,18 +34,39 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
       <p className="p">{project.description}</p>
-      {project.video ? (
-        <video className="projectVideo" controls playsInline preload="metadata" poster={project.video.poster}>
-          <source src={project.video.src} />
+      {youtubeSrc ? (
+        <iframe
+          className="projectYoutube"
+          src={youtubeSrc}
+          title={project.title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      ) : project.video ? (
+        <video
+          className="projectVideo"
+          controls
+          playsInline
+          preload="metadata"
+          poster={project.video.poster ? resolvePublic(project.video.poster) : undefined}
+        >
+          <source src={resolvePublic(project.video.src)} />
         </video>
       ) : null}
       {project.image ? (
         imageHref ? (
-          <a className="projectImageLink" href={imageHref} target="_blank" rel="noreferrer">
-            <img className="projectImage" src={project.image.src} alt={project.image.alt} loading="lazy" />
+          <a className="projectImageLink" href={resolvePublic(imageHref)} target="_blank" rel="noreferrer">
+            <img
+              className="projectImage"
+              src={resolvePublic(project.image.src)}
+              alt={project.image.alt}
+              loading="lazy"
+            />
           </a>
         ) : (
-          <img className="projectImage" src={project.image.src} alt={project.image.alt} loading="lazy" />
+          <img className="projectImage" src={resolvePublic(project.image.src)} alt={project.image.alt} loading="lazy" />
         )
       ) : null}
       <ul className="list compact">

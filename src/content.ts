@@ -11,6 +11,7 @@ export type Project = {
     alt: string
     href?: string
   }
+  youtubeId?: string
   video?: {
     src: string
     poster?: string
@@ -176,9 +177,7 @@ export const content = {
       ],
       tech: ['React Native', 'Expo', 'OpenAI API', 'Firebase'],
       category: 'web',
-      video: {
-        src: '/heart-garden.mp4',
-      },
+      youtubeId: 'NLGeP4-j8Rg',
       links: {
         code: {
           label: 'Code',
@@ -197,9 +196,7 @@ export const content = {
       ],
       tech: ['Unity', 'C#', 'XR Interaction', 'VR'],
       category: 'unity',
-      video: {
-        src: '/VR Earthquake Training Demo.mp4',
-      },
+      youtubeId: 'Zbyo0MhhswI',
       links: {},
     },
     {
@@ -213,9 +210,7 @@ export const content = {
       ],
       tech: ['Unity', 'C#', 'Meta XR SDK', 'VR'],
       category: 'unity',
-      video: {
-        src: '/VR FPS Game Demo.mp4',
-      },
+      youtubeId: '7SbzpdSTB_w',
       links: {},
     },        
     {
@@ -229,9 +224,7 @@ export const content = {
       ],
       tech: ['Unity', 'C#', 'Meta XR SDK', 'VR'],
       category: 'unity',
-      video: {
-        src: '/VR Hollow Knight Redesign Demo.mov',
-      },
+      youtubeId: 'DOszWHYhFpk',
       links: {},
     },        
     {
@@ -245,9 +238,7 @@ export const content = {
       ],
       tech: ['Unity', 'C#', 'Meta XR SDK', 'VR'],
       category: 'unity',
-      video: {
-        src: '/VR Valorant Redesign Demo.mov',
-      },
+      youtubeId: 'TEApWfLtroo',
       links: {},
     },        
   ] satisfies Project[],

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { content } from '../content'
 import { Container } from '../components/Container'
 import { ProjectCard } from '../components/ProjectCard'
@@ -6,6 +8,15 @@ import { Section } from '../components/Section'
 export function Projects() {
   const web = content.projects.filter((p) => (p.category ?? 'web') === 'web')
   const unity = content.projects.filter((p) => p.category === 'unity')
+  const location = useLocation()
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const section = params.get('section')
+    if (!section) return
+    const el = document.getElementById(section)
+    if (el) el.scrollIntoView({ block: 'start' })
+  }, [location.search])
 
   return (
     <Section id="projects" title="Projects">

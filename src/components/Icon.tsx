@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+
 const icons = {
   sun: (
     <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0 4v-2m0-16V2m10 10h-2M4 12H2m17.071 7.071-1.414-1.414M6.343 6.343 4.929 4.929m14.142 0-1.414 1.414M6.343 17.657 4.929 19.071" />
@@ -37,7 +39,7 @@ const icons = {
       <path d="M17 15.5h.01" />
     </>
   ),
-} satisfies Record<string, JSX.Element>
+} satisfies Record<string, ReactElement>
 
 export function Icon({ name, size = 18 }: { name: keyof typeof icons; size?: number }) {
   return (
